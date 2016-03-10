@@ -109,8 +109,6 @@
 
 <time class='entry-date' datetime='2015-09-17T00:38:12+08:00'><span class='date'>2015 年9 月17 日</span> <span class='time'>12:38 am</span></time>
         
-           | <a href="/blog/new-post/#disqus_thread"
-             data-disqus-identifier="http://guitarplayer-ma.github.io/blog/new-post/">Comments</a>
         
       </p>
     
@@ -162,29 +160,17 @@
 </section>
 
 
-<section>
-  <h1>My Pinboard</h1>
-  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
-  <p><a href="http://pinboard.in/u:马达">My Pinboard Bookmarks &raquo;</a></p>
-</section>
-<script type="text/javascript">
-  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
-  var pinboard_user = "马达"; //id target for pinboard list
-  var pinboard_count = 3; //id target for pinboard list
-  (function(){
-    var pinboardInit = document.createElement('script');
-    pinboardInit.type = 'text/javascript';
-    pinboardInit.async = true;
-    pinboardInit.src = '/javascripts/pinboard.js';
-    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
-  })();
-</script>
-
 
 
 <section>
   <h1>关于我</h1>
   <p>A little something about me.</p>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    { % category_list %}
+  </ul>
 </section>
 
   
@@ -199,19 +185,6 @@
 
 </footer>
   
-
-<script type="text/javascript">
-      var disqus_shortname = '本文评论';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
 
 
 
