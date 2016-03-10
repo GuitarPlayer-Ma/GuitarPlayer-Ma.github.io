@@ -4,7 +4,7 @@
   <title><![CDATA[加斯加的猿]]></title>
   <link href="http://guitarplayer-ma.github.io/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-03-10T17:50:35+08:00</updated>
+  <updated>2016-03-10T18:11:32+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Test]]></title>
-    <link href="http://guitarplayer-ma.github.io/blog/test/"/>
-    <updated>2016-03-10T17:46:00+08:00</updated>
-    <id>http://guitarplayer-ma.github.io/blog/test</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[iOS中的几种本地数据存储方法]]></title>
