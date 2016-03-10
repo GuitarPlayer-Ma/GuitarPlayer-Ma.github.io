@@ -3,7 +3,7 @@ layout: post
 title: "iOS中的几种本地数据存储方法"
 date: 2015-09-17 00:38:12 +0800
 comments: true
-categories: 
+categories: iOS开发
 ---
 这是一篇关于数据存储的知识总结。仅涉及到本地数据的存取，适合iOS开发的初学者。
 
@@ -75,6 +75,7 @@ NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, N
 // 拼接文件路径
 NSString *filePath = [cachesPath stringByAppendingPathComponent:@"user.plist"];
 NSArray *arr = [NSArray arrayWithContentsOfFile:filePath];
+
 ```
 
 偏好设置
