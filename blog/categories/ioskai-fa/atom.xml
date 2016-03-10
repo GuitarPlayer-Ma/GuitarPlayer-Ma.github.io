@@ -4,7 +4,7 @@
   <title><![CDATA[分类：ios开发 | 加斯加的猿]]></title>
   <link href="http://guitarplayer-ma.github.io/blog/categories/ioskai-fa/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-03-10T18:11:32+08:00</updated>
+  <updated>2016-03-10T18:27:13+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[iOS中的几种本地数据存储方法]]></title>
     <link href="http://guitarplayer-ma.github.io/blog/new-post/"/>
-    <updated>2015-09-17T00:38:12+08:00</updated>
+    <updated>2015-09-17T00:00:00+08:00</updated>
     <id>http://guitarplayer-ma.github.io/blog/new-post</id>
     <content type="html"><![CDATA[<p>这是一篇关于数据存储的知识总结。仅涉及到本地数据的存取，适合iOS开发的初学者。</p>
 
