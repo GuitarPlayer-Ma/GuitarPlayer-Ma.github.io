@@ -4,7 +4,7 @@
   <title><![CDATA[分类：ios开发 | 加斯加的猿]]></title>
   <link href="http://guitarplayer-ma.github.io/blog/categories/ioskai-fa/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-03-10T17:47:01+08:00</updated>
+  <updated>2016-03-10T17:50:35+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -20,39 +20,65 @@
     <id>http://guitarplayer-ma.github.io/blog/new-post</id>
     <content type="html"><![CDATA[<p>这是一篇关于数据存储的知识总结。仅涉及到本地数据的存取，适合iOS开发的初学者。</p>
 
-<h2 id="section">应用沙盒</h2>
-<blockquote>
-  <p>每个iOS应用都有自己的应用沙盒(就是应用文件系统目录)，与其他应用的沙盒隔离。每个应用只能待在自己的沙盒里，其他应用不能访问该沙盒。</p>
-</blockquote>
+<h2>应用沙盒</h2>
 
-<h5 id="section-1">沙盒由以下几个文件组成：</h5>
+<blockquote><p>每个iOS应用都有自己的应用沙盒(就是应用文件系统目录)，与其他应用的沙盒隔离。每个应用只能待在自己的沙盒里，其他应用不能访问该沙盒。</p></blockquote>
+
+<h5>沙盒由以下几个文件组成：</h5>
+
 <ul>
-  <li>layer（应用程序包）:包含了所有的资源文件和可执行文件</li>
-  <li>Documents：保存应用运行时生成的需要持久化的数据，iTunes同步设备是会备份该目录。例如，游戏应用可将游戏存档板存在该目录</li>
-  <li>temp：保存应用运行时所需的临时数据，使用完毕后再将相应的文件从该目录删除。应用没有运行时，系统也可能会清除该目录下的文件。iTunes同步设备时不会备份该目录</li>
-  <li>Library/Caches：保存应用运行时生成的需要持久化的数据，iTunes同步设备时不会备份该目录。一般存储体积大、不需要备份的非重要数据</li>
-  <li>Library/Preference：保存应用的所有偏好设置，iOS的Settings(设置)应用会在该目录中查找应用的设置信息。iTunes同步设备时会备份该目录
+<li>layer（应用程序包）:包含了所有的资源文件和可执行文件</li>
+<li>Documents：保存应用运行时生成的需要持久化的数据，iTunes同步设备是会备份该目录。例如，游戏应用可将游戏存档板存在该目录</li>
+<li>temp：保存应用运行时所需的临时数据，使用完毕后再将相应的文件从该目录删除。应用没有运行时，系统也可能会清除该目录下的文件。iTunes同步设备时不会备份该目录</li>
+<li>Library/Caches：保存应用运行时生成的需要持久化的数据，iTunes同步设备时不会备份该目录。一般存储体积大、不需要备份的非重要数据</li>
+<li>Library/Preference：保存应用的所有偏好设置，iOS的Settings(设置)应用会在该目录中查找应用的设置信息。iTunes同步设备时会备份该目录</li>
+</ul>
+
+
 <!--more-->
-#####获取沙盒目录的方法：</li>
-  <li>利用<code>NSHomeDirectory函数</code>：不建议使用，因为新版本的操作系统可能会修改目录名</li>
-</ul>
 
-<p><code>
-NSString *home = NSHomeDirectory();
-</code></p>
+
+<h5>获取沙盒目录的方法：</h5>
 
 <ul>
-  <li>利用<code>NSSearchPathForDirectoriesInDomains</code>函数</li>
+<li>利用<code>NSHomeDirectory函数</code>：不建议使用，因为新版本的操作系统可能会修改目录名</li>
 </ul>
 
-<p><code>
-NSArray *array =  NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NSSearchPathDomainMask domainMask, BOOL expandTilde);
-</code>
-| 参数 | 说明 |
-| – | – |
-| directory | 枚举类型，选择要查找的文件 |
-| domainMask | 枚举类型，查找的范围 |
-| expandTilde | 是否展开全路径 |</p>
+
+<pre><code>NSString *home = NSHomeDirectory();
+</code></pre>
+
+<ul>
+<li>利用<code>NSSearchPathForDirectoriesInDomains</code>函数</li>
+</ul>
+
+
+<pre><code>NSArray *array =  NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NSSearchPathDomainMask domainMask, BOOL expandTilde);
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th> 参数 </th>
+<th> 说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> directory </td>
+<td> 枚举类型，选择要查找的文件 </td>
+</tr>
+<tr>
+<td> domainMask </td>
+<td> 枚举类型，查找的范围 </td>
+</tr>
+<tr>
+<td> expandTilde </td>
+<td> 是否展开全路径 </td>
+</tr>
+</tbody>
+</table>
+
 
 <p>示例：表示在当前用户下（NSUserDomainMask）去搜索caches文件（NSCachesDirectory），并且展开全路径。最后得到的数组的[0]位置就是caches文件的全路径
 <code>
@@ -61,154 +87,148 @@ NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, N
 </code>
 - 利用<code>NSTemporaryDirectory</code>函数直接得到temp的文件路径</p>
 
-<p><code>
-NSString *tmp = NSTemporaryDirectory();
-</code></p>
+<pre><code>NSString *tmp = NSTemporaryDirectory();
+</code></pre>
 
-<h2 id="plist">属性列表（plist）</h2>
-<blockquote>
-  <p>属性列表是一种XML格式的文件，拓展名为plist
-。如果对象是NSString、NSDictionary、NSArray、NSData、NSNumber等类型，就可以使用writeToFile:atomically:方法直接将对象写到属性列表文件中。但是plist不能存储自定义对象。</p>
-</blockquote>
+<h2>属性列表（plist）</h2>
 
-<h5 id="section-2">写入：</h5>
+<blockquote><p>属性列表是一种XML格式的文件，拓展名为plist
+。如果对象是NSString、NSDictionary、NSArray、NSData、NSNumber等类型，就可以使用writeToFile:atomically:方法直接将对象写到属性列表文件中。但是plist不能存储自定义对象。</p></blockquote>
 
-<p>```
-//获取Caches文件夹的路径
-NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];</p>
+<h5>写入：</h5>
 
-<p>// 拼接文件路径
-NSString *filePath = [cachesPath stringByAppendingPathComponent:@”user.plist”];</p>
+<pre><code>//获取Caches文件夹的路径
+NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
 
-<p>// File文件全路 径
+// 拼接文件路径
+NSString *filePath = [cachesPath stringByAppendingPathComponent:@"user.plist"];
+
+// File文件全路 径
 [users writeToFile:filePath atomically:YES];
-```</p>
+</code></pre>
 
-<h5 id="section-3">读取：</h5>
+<h5>读取：</h5>
 
-<p>```
-// plist读取：之前是对象怎么存的，读取出来也是什么数组
-NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];</p>
+<pre><code>// plist读取：之前是对象怎么存的，读取出来也是什么数组
+NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
 
-<p>// 拼接文件路径
-NSString *filePath = [cachesPath stringByAppendingPathComponent:@”user.plist”];
-NSArray *arr = [NSArray arrayWithContentsOfFile:filePath];</p>
+// 拼接文件路径
+NSString *filePath = [cachesPath stringByAppendingPathComponent:@"user.plist"];
+NSArray *arr = [NSArray arrayWithContentsOfFile:filePath];
+</code></pre>
 
-<p>```</p>
+<h2>偏好设置</h2>
 
-<h2 id="section-4">偏好设置</h2>
-<blockquote>
-  <p>很多iOS应用都支持偏好设置，比如保存用户名、密码、字体大小等设置，iOS提供了一套标准的解决方案来为应用加入偏好设置功能。每个应用都有个<code>NSUserDefaults</code>实例，通过它来存取偏好设置
-。</p>
-</blockquote>
+<blockquote><p>很多iOS应用都支持偏好设置，比如保存用户名、密码、字体大小等设置，iOS提供了一套标准的解决方案来为应用加入偏好设置功能。每个应用都有个<code>NSUserDefaults</code>实例，通过它来存取偏好设置
+。</p></blockquote>
 
-<h5 id="section-5">存储：</h5>
+<h5>存储：</h5>
 
-<p><code>
-NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+<pre><code>NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 [defaults setObject:@"jsjy" forKey:@"username"];
 [defaults setFloat:18.0f forKey:@"text_size"];
 [defaults setBool:YES forKey:@"auto_login"];
-</code></p>
+</code></pre>
 
-<h5 id="section-6">读取：</h5>
+<h5>读取：</h5>
 
-<p><code>
-// 以什么样的方式存储，就以什么样的方式读取
+<pre><code>// 以什么样的方式存储，就以什么样的方式读取
 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 NSString *username = [defaults stringForKey:@"username"];
 float textSize = [defaults floatForKey:@"text_size"];
 BOOL autoLogin = [defaults boolForKey:@"auto_login"];
-</code></p>
+</code></pre>
 
 <p>注意：NSUserDefaults设置数据时，不是立即写入，而是根据时间戳定时地把缓存中的数据写入本地磁盘。所以调用了set方法之后数据有可能还没有写入磁盘应用程序就终止了。出现以上问题，可以通过调用<code>[default synchornize]</code>方法强制写入</p>
 
-<h5 id="section-7">偏好设置的优点：</h5>
-<ul>
-  <li>不需要关心文件名，系统会自动帮你生成一个文件名</li>
-  <li>可以快速做键值对的存储</li>
-</ul>
-
-<h2 id="nskeyedarchiver">NSKeyedArchiver</h2>
-<blockquote>
-  <p>如果对象是NSString、NSDictionary、NSArray、NSData、NSNumber等类型，可以直接用<code>NSKeyedArchiver</code>进行归档和恢复
-，自定义的对象也可以用<code>NSKeyedArchiver</code>进行归档和恢复。</p>
-</blockquote>
-
-<h5 id="nscodingnscoding">不是所有的对象都可以直接用这种方法进行归档，只有遵守了NSCoding协议的对象才可以。NSCoding协议有两个方法：</h5>
+<h5>偏好设置的优点：</h5>
 
 <ul>
-  <li>encodeWithCoder:方法</li>
+<li>不需要关心文件名，系统会自动帮你生成一个文件名</li>
+<li>可以快速做键值对的存储</li>
 </ul>
+
+
+<h2>NSKeyedArchiver</h2>
+
+<blockquote><p>如果对象是NSString、NSDictionary、NSArray、NSData、NSNumber等类型，可以直接用<code>NSKeyedArchiver</code>进行归档和恢复
+，自定义的对象也可以用<code>NSKeyedArchiver</code>进行归档和恢复。</p></blockquote>
+
+<h5>不是所有的对象都可以直接用这种方法进行归档，只有遵守了NSCoding协议的对象才可以。NSCoding协议有两个方法：</h5>
+
+<ul>
+<li>encodeWithCoder:方法</li>
+</ul>
+
 
 <p>每次归档对象时，都会调用这个方法。一般在这个方法里面指定如何归档对象中的每个实例变量，可以使用<code>encodeObject: forKey:</code>方法归档实例变量</p>
 
 <ul>
-  <li>initWithCoder:</li>
+<li>initWithCoder:</li>
 </ul>
+
 
 <p>每次从文件中恢复(解码)对象时，都会调用这个方法。一般在这个方法里面指定如何解码文件中的数据为对象的实例变量，可以使用<code>decodeObject: forKey</code>方法解码实例变量</p>
 
-<h5 id="section-8">两个示例：</h5>
+<h5>两个示例：</h5>
 
 <ul>
-  <li>归档和解档NSArray数据</li>
+<li>归档和解档NSArray数据</li>
 </ul>
 
-<p>```
-// 归档
+
+<pre><code>// 归档
 NSArray *array = [NSArray arrayWithObjects:@”a”,@”b”,nil];
-[NSKeyedArchiver archiveRootObject:array toFile:filePath];</p>
+[NSKeyedArchiver archiveRootObject:array toFile:filePath];
 
-<p>// 解档
+// 解档
 NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-```</p>
+</code></pre>
 
 <ul>
-  <li>归档和解档自定义对象</li>
+<li>归档和解档自定义对象</li>
 </ul>
 
-<p>```
-// 遵守协议
-@interface Person : NSObject<nscoding>
+
+<pre><code>// 遵守协议
+@interface Person : NSObject&lt;NSCoding&gt;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) int age;
 @property (nonatomic, assign) float height;
-@end</nscoding></p>
+@end
 
-<p>@implementation Person
+@implementation Person
 // 实现协议方法
 - (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeObject:self.name forKey:@”name”];
-    [encoder encodeInt:self.age forKey:@”age”];
-    [encoder encodeFloat:self.height forKey:@”height”];
+    [encoder encodeObject:self.name forKey:@"name"];
+    [encoder encodeInt:self.age forKey:@"age"];
+    [encoder encodeFloat:self.height forKey:@"height"];
 }
 - (id)initWithCoder:(NSCoder *)decoder {
     if (self = [super init]) {
-      self.name = [decoder decodeObjectForKey:@”name”];
-      self.age = [decoder decodeIntForKey:@”age”];
-      self.height = [decoder decodeFloatForKey:@”height”];
+      self.name = [decoder decodeObjectForKey:@"name"];
+      self.age = [decoder decodeIntForKey:@"age"];
+      self.height = [decoder decodeFloatForKey:@"height"];
     }
     return self;
 }
 @end
-```
-注意：如果父类也遵守了NSCoding协议，那在实现<code>initWithCode:</code>方法时应该<code>[super initWithCode:decoder]</code>做父类的初始化操作，确保继承的实例变量也能被解码，即也能被恢复
+</code></pre>
+
+<p>注意：如果父类也遵守了NSCoding协议，那在实现<code>initWithCode:</code>方法时应该<code>[super initWithCode:decoder]</code>做父类的初始化操作，确保继承的实例变量也能被解码，即也能被恢复
 。而在<code>encodeWithCoder:</code>方法中也应该<code>[super encodeWithCoder:encoder]</code>确保继承的实例变量也能被编码，即也能被归档
 。</p>
 
-<p>```
-// 归档
+<pre><code>// 归档
 Person *person = [[Person alloc] init];
-person.name = @”JSJY”;
+person.name = @"JSJY";
 person.age = 27;
 person.height = 1.0f;
-[NSKeyedArchiver archiveRootObject:person toFile:filePath];</p>
+[NSKeyedArchiver archiveRootObject:person toFile:filePath];
 
-<p>// 解档
-Person *person = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];</p>
-
-<p>```</p>
+// 解档
+Person *person = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+</code></pre>
 ]]></content>
   </entry>
   
