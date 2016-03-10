@@ -4,7 +4,7 @@
   <title><![CDATA[加斯加的猿]]></title>
   <link href="http://guitarplayer-ma.github.io/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-03-10T11:12:40+08:00</updated>
+  <updated>2016-03-10T11:19:18+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -32,9 +32,13 @@
 <li>temp：保存应用运行时所需的临时数据，使用完毕后再将相应的文件从该目录删除。应用没有运行时，系统也可能会清除该目录下的文件。iTunes同步设备时不会备份该目录</li>
 <li>Library/Caches：保存应用运行时生成的需要持久化的数据，iTunes同步设备时不会备份该目录。一般存储体积大、不需要备份的非重要数据</li>
 <li>Library/Preference：保存应用的所有偏好设置，iOS的Settings(设置)应用会在该目录中查找应用的设置信息。iTunes同步设备时会备份该目录
-_
+_</li>
+</ul>
 
-<h5>获取沙盒目录的方法：</h5></li>
+
+<h5>获取沙盒目录的方法：</h5>
+
+<ul>
 <li>利用<code>NSHomeDirectory函数</code>：不建议使用，因为新版本的操作系统可能会修改目录名</li>
 </ul>
 
