@@ -4,7 +4,7 @@
   <title><![CDATA[分类：ios开发 | 加斯加的猿]]></title>
   <link href="http://guitarplayer-ma.github.io/blog/categories/ioskai-fa/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-03-10T17:04:57+08:00</updated>
+  <updated>2016-03-10T17:38:18+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -92,8 +92,9 @@ NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, N
 
 <p>// 拼接文件路径
 NSString *filePath = [cachesPath stringByAppendingPathComponent:@”user.plist”];
-NSArray *arr = [NSArray arrayWithContentsOfFile:filePath];
-```</p>
+NSArray *arr = [NSArray arrayWithContentsOfFile:filePath];</p>
+
+<p>```</p>
 
 <h2 id="section-4">偏好设置</h2>
 <blockquote>
