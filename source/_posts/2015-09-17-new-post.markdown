@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "iOS中的几种本地数据存储方法"
-date: 2015-09-17 00:38:12 +0800
+date: 2015-09-17 
 comments: true
 categories: iOS开发
 ---
@@ -21,6 +21,10 @@ categories: iOS开发
 <!--more-->
 #####获取沙盒目录的方法：
 - 利用`NSHomeDirectory函数`：不建议使用，因为新版本的操作系统可能会修改目录名
+
+{ % coderay [lang:lang] [linenos:true] [hello] % }
+代码片段
+{ % endcoderay % }
 
 ```
 NSString *home = NSHomeDirectory();
