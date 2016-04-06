@@ -4,7 +4,7 @@
   <title><![CDATA[马达加斯加岛]]></title>
   <link href="http://guitarplayer-ma.github.io/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-04-07T01:33:09+08:00</updated>
+  <updated>2016-04-07T01:38:44+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -18,11 +18,15 @@
     <link href="http://guitarplayer-ma.github.io/blog/test/"/>
     <updated>2016-04-06T22:40:23+08:00</updated>
     <id>http://guitarplayer-ma.github.io/blog/test</id>
-    <content type="html"><![CDATA[<p>{ % coderay % }
+    <content type="html"><![CDATA[<script type="math/tex; mode=display">f'\left( x\right) = \lim _{x\rightarrow 0}\dfrac {f\left( x+\Delta x\right) - f\left( x\right)}{\Delta x}</script>
+
+<p>{ % coderay test % }
 just test
 { % endcoderay % }</p>
 
-<script type="math/tex; mode=display">f'\left( x\right) = \lim _{x\rightarrow 0}\dfrac {f\left( x+\Delta x\right) - f\left( x\right)}{\Delta x}</script>
+<p>{ % coderay [lang:lang] [linenos:true] % }
+    code snippet
+{ % endcoderay % }</p>
 ]]></content>
   </entry>
   
@@ -53,9 +57,9 @@ just test
 <figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">{ % coderay % }
-</span><span class="line">NSString *home = NSHomeDirectory();
-</span><span class="line">{ % endcoderay % }
+</pre></td><td class="code"><pre><code class=""><span class="line"> { % coderay % }
+</span><span class="line"> NSString *home = NSHomeDirectory();
+</span><span class="line"> { % endcoderay % }
 </span></code></pre></td></tr></table></div></figure>
 <ul>
   <li>利用<code>NSSearchPathForDirectoriesInDomains</code>函数</li>

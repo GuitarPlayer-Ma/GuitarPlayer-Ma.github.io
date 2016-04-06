@@ -9,9 +9,11 @@
   <meta name="author" content="加斯加的猿">
 
   
-  <meta name="description" content="{ % coderay % }
+  <meta name="description" content=" { % coderay test % }
 just test
-{ % endcoderay % } ">
+{ % endcoderay % } { % coderay [lang:lang] [linenos:true] % } code snippet
+{ % endcoderay % }
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -113,11 +115,15 @@ just test
   </header>
 
 
-<div class="entry-content"><p>{ % coderay % }
+<div class="entry-content"><script type="math/tex; mode=display">f'\left( x\right) = \lim _{x\rightarrow 0}\dfrac {f\left( x+\Delta x\right) - f\left( x\right)}{\Delta x}</script>
+
+<p>{ % coderay test % }
 just test
 { % endcoderay % }</p>
 
-<script type="math/tex; mode=display">f'\left( x\right) = \lim _{x\rightarrow 0}\dfrac {f\left( x+\Delta x\right) - f\left( x\right)}{\Delta x}</script>
+<p>{ % coderay [lang:lang] [linenos:true] % }
+    code snippet
+{ % endcoderay % }</p>
 </div>
 
 
