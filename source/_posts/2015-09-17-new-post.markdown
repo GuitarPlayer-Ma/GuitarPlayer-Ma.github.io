@@ -28,7 +28,7 @@ NSString *home = NSHomeDirectory();
 
 - 利用`NSSearchPathForDirectoriesInDomains`函数
 
-{% codeblock lang:objc %}
+{% codeblock lang:objc test %}
 NSArray *array =  NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NSSearchPathDomainMask domainMask, BOOL expandTilde);
 {% endcodeblock %}
 
@@ -38,7 +38,7 @@ NSArray *array =  NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory dire
 | domainMask | 枚举类型，查找的范围 |
 | expandTilde | 是否展开全路径 |
 
-示例：表示在当前用户下（NSUserDomainMask）去搜索caches文件（NSCachesDirectory），并且展开全路径。最后得到的数组的[0]位置就是caches文件的全路径
+示例：表示在当前用户下（NSUserDomainMask）去搜索caches文件（NSCachesDirectory），并且展开全路径。最后得到的数组的[0]位置就是caches文件全路径
 ```
 //获取Caches文件夹的路径
 NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
