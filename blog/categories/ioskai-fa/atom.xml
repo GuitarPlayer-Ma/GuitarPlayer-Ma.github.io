@@ -4,7 +4,7 @@
   <title><![CDATA[分类：ios开发 | 加斯加的猿]]></title>
   <link href="http://guitarplayer-ma.github.io/blog/categories/ioskai-fa/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-04-05T23:55:16+08:00</updated>
+  <updated>2016-04-06T20:14:14+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -45,16 +45,34 @@ NSString *home = NSHomeDirectory();
   <li>利用<code>NSSearchPathForDirectoriesInDomains</code>函数</li>
 </ul>
 
-<p><code>
+<p>{% codeblock lang:objc test %}
 NSArray *array =  NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NSSearchPathDomainMask domainMask, BOOL expandTilde);
-</code>
-| 参数 | 说明 |
-| – | – |
-| directory | 枚举类型，选择要查找的文件 |
-| domainMask | 枚举类型，查找的范围 |
-| expandTilde | 是否展开全路径 |</p>
+{% endcodeblock %}</p>
 
-<p>示例：表示在当前用户下（NSUserDomainMask）去搜索caches文件（NSCachesDirectory），并且展开全路径。最后得到的数组的[0]位置就是caches文件的全路径
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>directory</td>
+      <td>枚举类型，选择要查找的文件</td>
+    </tr>
+    <tr>
+      <td>domainMask</td>
+      <td>枚举类型，查找的范围</td>
+    </tr>
+    <tr>
+      <td>expandTilde</td>
+      <td>是否展开全路径</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>示例：表示在当前用户下（NSUserDomainMask）去搜索caches文件（NSCachesDirectory），并且展开全路径。最后得到的数组的[0]位置就是caches文件全路径
 <code>
 //获取Caches文件夹的路径
 NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
