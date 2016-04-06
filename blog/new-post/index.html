@@ -130,10 +130,13 @@
   <li>利用<code>NSHomeDirectory函数</code>：不建议使用，因为新版本的操作系统可能会修改目录名</li>
 </ul>
 
-<p>{ % coderay % }
-NSString *home = NSHomeDirectory();
-{ % endcoderay % }</p>
-
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">{ % coderay % }
+</span><span class="line">NSString *home = NSHomeDirectory();
+</span><span class="line">{ % endcoderay % }
+</span></code></pre></td></tr></table></div></figure>
 <ul>
   <li>利用<code>NSSearchPathForDirectoriesInDomains</code>函数</li>
 </ul>
