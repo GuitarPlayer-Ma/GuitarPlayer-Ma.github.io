@@ -28,9 +28,10 @@ NSString *home = NSHomeDirectory();
 
 - 利用`NSSearchPathForDirectoriesInDomains`函数
 
-```
+{% codeblock lang:objc %}
 NSArray *array =  NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NSSearchPathDomainMask domainMask, BOOL expandTilde);
-```
+{% endcodeblock %}
+
 | 参数 | 说明 |
 | -- | -- |
 | directory | 枚举类型，选择要查找的文件 |
