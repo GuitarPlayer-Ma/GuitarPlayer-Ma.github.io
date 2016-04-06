@@ -4,7 +4,7 @@
   <title><![CDATA[分类：ios开发 | 马达加斯加岛]]></title>
   <link href="http://guitarplayer-ma.github.io/blog/categories/ioskai-fa/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-04-07T00:57:25+08:00</updated>
+  <updated>2016-04-07T01:04:54+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -37,7 +37,7 @@
   <li>利用<code>NSHomeDirectory函数</code>：不建议使用，因为新版本的操作系统可能会修改目录名</li>
 </ul>
 
-<p>{% coderay lang:objc linenos:ture 函数返回值 %}
+<p>{% coderay lang:objc 函数返回值 %}
 NSString *home = NSHomeDirectory();
 {% endcoderay %}</p>
 
