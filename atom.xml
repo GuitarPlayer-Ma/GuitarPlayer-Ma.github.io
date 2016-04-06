@@ -4,7 +4,7 @@
   <title><![CDATA[马达加斯加岛]]></title>
   <link href="http://guitarplayer-ma.github.io/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-04-07T01:10:35+08:00</updated>
+  <updated>2016-04-07T01:13:29+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -18,9 +18,9 @@
     <link href="http://guitarplayer-ma.github.io/blog/test/"/>
     <updated>2016-04-06T22:40:23+08:00</updated>
     <id>http://guitarplayer-ma.github.io/blog/test</id>
-    <content type="html"><![CDATA[<p>{ %coderay% }
+    <content type="html"><![CDATA[<p>{ % coderay % }
 just test
-{ %endcoderay% }</p>
+{ % endcoderay % }</p>
 ]]></content>
   </entry>
   
