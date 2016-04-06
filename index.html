@@ -157,6 +157,29 @@ just test
 
   <div class="entry-content"><p>这是一篇关于数据存储的知识总结。仅涉及到本地数据的存取，适合iOS开发的初学者。</p>
 
+<ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">应用沙盒</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">沙盒由以下几个文件组成：</a></li>
+    </ul>
+  </li>
+  <li><a href="#plist" id="markdown-toc-plist">属性列表（plist）</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">写入：</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">读取：</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-4" id="markdown-toc-section-4">偏好设置</a>    <ul>
+      <li><a href="#section-5" id="markdown-toc-section-5">存储：</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">读取：</a></li>
+      <li><a href="#section-7" id="markdown-toc-section-7">偏好设置的优点：</a></li>
+    </ul>
+  </li>
+  <li><a href="#nskeyedarchiver" id="markdown-toc-nskeyedarchiver">NSKeyedArchiver</a>    <ul>
+      <li><a href="#nscodingnscoding" id="markdown-toc-nscodingnscoding">不是所有的对象都可以直接用这种方法进行归档，只有遵守了NSCoding协议的对象才可以。NSCoding协议有两个方法：</a></li>
+      <li><a href="#section-8" id="markdown-toc-section-8">两个示例：</a></li>
+    </ul>
+  </li>
+</ul>
+
 <h2 id="section">应用沙盒</h2>
 <blockquote>
   <p>每个iOS应用都有自己的应用沙盒(就是应用文件系统目录)，与其他应用的沙盒隔离。每个应用只能待在自己的沙盒里，其他应用不能访问该沙盒。</p>
