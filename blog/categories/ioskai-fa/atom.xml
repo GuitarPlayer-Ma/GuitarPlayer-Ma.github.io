@@ -4,7 +4,7 @@
   <title><![CDATA[分类：ios开发 | 马达加斯加岛]]></title>
   <link href="http://guitarplayer-ma.github.io/blog/categories/ioskai-fa/atom.xml" rel="self"/>
   <link href="http://guitarplayer-ma.github.io/"/>
-  <updated>2016-04-07T01:07:06+08:00</updated>
+  <updated>2016-04-07T01:08:43+08:00</updated>
   <id>http://guitarplayer-ma.github.io/</id>
   <author>
     <name><![CDATA[加斯加的猿]]></name>
@@ -37,18 +37,17 @@
   <li>利用<code>NSHomeDirectory函数</code>：不建议使用，因为新版本的操作系统可能会修改目录名</li>
 </ul>
 
-<p>{ % coderay % }
+<p>{% coderay %}
 NSString *home = NSHomeDirectory();
-{ % endcoderay % }</p>
+{% endcoderay %}</p>
 
 <ul>
   <li>利用<code>NSSearchPathForDirectoriesInDomains</code>函数</li>
 </ul>
 
-<p><figure class='code'><figcaption><span>test </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="bp">NSArray</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span>  <span class="n">NSSearchPathForDirectoriesInDomains</span><span class="p">(</span><span class="n">NSSearchPathDirectory</span> <span class="n">directory</span><span class="p">,</span> <span class="n">NSSearchPathDomainMask</span> <span class="n">domainMask</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="n">expandTilde</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock lang:objc test %}
+NSArray *array =  NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory directory, NSSearchPathDomainMask domainMask, BOOL expandTilde);
+{% endcodeblock %}</p>
 
 <table>
   <thead>
@@ -105,22 +104,15 @@ NSString *filePath = [cachesPath stringByAppendingPathComponent:@”user.plist�
 
 <h5 id="section-3">读取：</h5>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// plist读取：之前是对象怎么存的，读取出来也是什么数组
-</span><span class='line'>NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>// 拼接文件路径
-</span><span class='line'>NSString *filePath = [cachesPath stringByAppendingPathComponent:@”user.plist”];
-</span><span class='line'>NSArray *arr = [NSArray arrayWithContentsOfFile:filePath];&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock %}
+// plist读取：之前是对象怎么存的，读取出来也是什么数组
+NSString *cachesPath =  NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];</p>
+
+<p>// 拼接文件路径
+NSString *filePath = [cachesPath stringByAppendingPathComponent:@”user.plist”];
+NSArray *arr = [NSArray arrayWithContentsOfFile:filePath];</p>
+
+<p>{% endcodeblock %}</p>
 
 <h2 id="section-4">偏好设置</h2>
 <blockquote>
@@ -130,27 +122,22 @@ NSString *filePath = [cachesPath stringByAppendingPathComponent:@”user.plist�
 
 <h5 id="section-5">存储：</h5>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-</span><span class='line'>[defaults setObject:@”jsjy” forKey:@”username”];
-</span><span class='line'>[defaults setFloat:18.0f forKey:@”text_size”];
-</span><span class='line'>[defaults setBool:YES forKey:@”auto_login”];</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock %}
+NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+[defaults setObject:@”jsjy” forKey:@”username”];
+[defaults setFloat:18.0f forKey:@”text_size”];
+[defaults setBool:YES forKey:@”auto_login”];
+{% endcodeblock %}</p>
 
 <h5 id="section-6">读取：</h5>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// 以什么样的方式存储，就以什么样的方式读取
-</span><span class='line'>NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-</span><span class='line'>NSString *username = [defaults stringForKey:@”username”];
-</span><span class='line'>float textSize = [defaults floatForKey:@”text_size”];
-</span><span class='line'>BOOL autoLogin = [defaults boolForKey:@”auto_login”];</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock %}
+// 以什么样的方式存储，就以什么样的方式读取
+NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+NSString *username = [defaults stringForKey:@”username”];
+float textSize = [defaults floatForKey:@”text_size”];
+BOOL autoLogin = [defaults boolForKey:@”auto_login”];
+{% endcodeblock %}</p>
 
 <p>注意：NSUserDefaults设置数据时，不是立即写入，而是根据时间戳定时地把缓存中的数据写入本地磁盘。所以调用了set方法之后数据有可能还没有写入磁盘应用程序就终止了。出现以上问题，可以通过调用<code>[default synchornize]</code>方法强制写入</p>
 
@@ -186,96 +173,61 @@ NSString *filePath = [cachesPath stringByAppendingPathComponent:@”user.plist�
   <li>归档和解档NSArray数据</li>
 </ul>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// 归档
-</span><span class='line'>NSArray *array = [NSArray arrayWithObjects:@”a”,@”b”,nil];
-</span><span class='line'>[NSKeyedArchiver archiveRootObject:array toFile:filePath];&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>// 解档
-</span><span class='line'>NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock %}
+// 归档
+NSArray *array = [NSArray arrayWithObjects:@”a”,@”b”,nil];
+[NSKeyedArchiver archiveRootObject:array toFile:filePath];</p>
+
+<p>// 解档
+NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+{% endcodeblock %}</p>
 
 <ul>
   <li>归档和解档自定义对象</li>
 </ul>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// 遵守协议
-</span><span class='line'>@interface Person : NSObject&lt;nscoding>
-</span><span class='line'>@property (nonatomic, copy) NSString *name;
-</span><span class='line'>@property (nonatomic, assign) int age;
-</span><span class='line'>@property (nonatomic, assign) float height;
-</span><span class='line'>@end&lt;/nscoding>&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>@implementation Person
-</span><span class='line'>// 实现协议方法
-</span><span class='line'>- (void)encodeWithCoder:(NSCoder *)encoder {
-</span><span class='line'>    [encoder encodeObject:self.name forKey:@”name”];
-</span><span class='line'>    [encoder encodeInt:self.age forKey:@”age”];
-</span><span class='line'>    [encoder encodeFloat:self.height forKey:@”height”];
-</span><span class='line'>}
-</span><span class='line'>- (id)initWithCoder:(NSCoder *)decoder {
-</span><span class='line'>    if (self = [super init]) {
-</span><span class='line'>      self.name = [decoder decodeObjectForKey:@”name”];
-</span><span class='line'>      self.age = [decoder decodeIntForKey:@”age”];
-</span><span class='line'>      self.height = [decoder decodeFloatForKey:@”height”];
-</span><span class='line'>    }
-</span><span class='line'>    return self;
-</span><span class='line'>}
-</span><span class='line'>@end</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock %}
+// 遵守协议
+@interface Person : NSObject<nscoding>
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) int age;
+@property (nonatomic, assign) float height;
+@end</nscoding></p>
+
+<p>@implementation Person
+// 实现协议方法
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.name forKey:@”name”];
+    [encoder encodeInt:self.age forKey:@”age”];
+    [encoder encodeFloat:self.height forKey:@”height”];
+}
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+      self.name = [decoder decodeObjectForKey:@”name”];
+      self.age = [decoder decodeIntForKey:@”age”];
+      self.height = [decoder decodeFloatForKey:@”height”];
+    }
+    return self;
+}
+@end
+{% endcodeblock %}</p>
 
 <p>注意：如果父类也遵守了NSCoding协议，那在实现<code>initWithCode:</code>方法时应该<code>[super initWithCode:decoder]</code>做父类的初始化操作，确保继承的实例变量也能被解码，即也能被恢复
 。而在<code>encodeWithCoder:</code>方法中也应该<code>[super encodeWithCoder:encoder]</code>确保继承的实例变量也能被编码，即也能被归档
 。</p>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// 归档
-</span><span class='line'>Person *person = [[Person alloc] init];
-</span><span class='line'>person.name = @”JSJY”;
-</span><span class='line'>person.age = 27;
-</span><span class='line'>person.height = 1.0f;
-</span><span class='line'>[NSKeyedArchiver archiveRootObject:person toFile:filePath];&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p>// 解档
-</span><span class='line'>Person *person = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];&lt;/p>
-</span><span class='line'>
-</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock %}
+// 归档
+Person *person = [[Person alloc] init];
+person.name = @”JSJY”;
+person.age = 27;
+person.height = 1.0f;
+[NSKeyedArchiver archiveRootObject:person toFile:filePath];</p>
+
+<p>// 解档
+Person *person = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];</p>
+
+<p>{% endcodeblock %}</p>
 ]]></content>
   </entry>
   
